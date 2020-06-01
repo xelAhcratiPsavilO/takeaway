@@ -44,9 +44,9 @@ git clone git@github.com:xelAhcratiPsavilO/takeaway.git
 irb
 ```
 ### Running
-- Load the Menu class (similarly for any other class):
+- Load the Takeaway class (similarly for any other class):
 ```bash
-> require './lib/menu'
+> require './lib/takeaway'
 => true
 ```
 - Create a new Menu instance (similarly for any other class):
@@ -63,8 +63,8 @@ rspec
 - Expected output:
 ```bash
 ....
-Finished in 0.00058 seconds (files took 0.30386 seconds to load)
-0 examples, 0 failures
+Finished in 0.06536 seconds (files took 0.61473 seconds to load)
+5 examples, 0 failures
 ```
 
 ## Domain Model
