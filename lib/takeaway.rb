@@ -16,6 +16,10 @@ class Takeaway
     end
   end
 
+  def confirm_order
+    order.total
+  end
+
   private
 
   attr_reader :menu, :order

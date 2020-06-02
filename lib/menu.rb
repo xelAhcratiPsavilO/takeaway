@@ -16,4 +16,8 @@ class Menu
   def dish?(dish)
     dishes.include? dish
   end
+
+  def price(dish_name)
+    dishes[dish_name]
+  end
 end

@@ -26,4 +26,10 @@ describe Menu do
       expect(menu.dish?(:dish3)).to be false
     end
   end
+
+  describe '#price' do
+    it 'shows the price of a given dish' do
+      expect(menu.price(:dish1)).to eq 4.45
+    end
+  end
 end

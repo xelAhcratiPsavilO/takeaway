@@ -26,4 +26,13 @@ describe 'User Stories' do
     allow(menu).to receive(:dish?).with(:turnip).and_return(false)
     expect { takeaway.take_order(invalid_order) }.to raise_error 'Not in the menu'
   end
+  # As a customer
+  # So that I can verify that my order is correct
+  # I would like to check that the total I have been given matches the sum of the various dishes in my order
+  it 'Takeaway confirms order total' do
+    allow(menu).to receive(:dish?).with(:taco).and_return(true)
+    allow(menu).to receive(:dish?).with(:drink).and_return(true)
+    takeaway.take_order(orders)
+    expect(takeaway.confirm_order).to eq 10.35
+  end
 end

@@ -20,4 +20,10 @@ describe Takeaway do
       takeaway.take_order(orders)
     end
   end
+  describe '#confirm_order' do
+    it 'instructs order to show the total' do
+      expect(order).to receive :total
+      takeaway.confirm_order
+    end
+  end
 end

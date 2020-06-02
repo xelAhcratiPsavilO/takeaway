@@ -40,4 +40,20 @@ describe Order do
       end
     end
   end
+
+  describe '#total' do
+    context 'when dishes have been ordered' do
+      before do
+        allow(menu).to receive(:dish?).with(:dish1).and_return(true)
+        allow(menu).to receive(:dish?).with(:dish2).and_return(true)
+        allow(menu).to receive(:price).with(:dish1).and_return(4.45)
+        allow(menu).to receive(:price).with(:dish2).and_return(2.95)
+        order.add(:dish1, 1)
+        order.add(:dish2, 2)
+      end
+      it 'confirms the total price of the order' do
+        expect(order.total).to eq 10.35
+      end
+    end
+  end
 end
