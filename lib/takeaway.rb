@@ -11,9 +11,7 @@ class Takeaway
   end
 
   def take_order(orders)
-    orders.each do |dish, quantity|
-      order.add(dish, quantity)
-    end
+    orders.each { |dish, quantity| order.add(dish, quantity) }
   end
 
   def confirm_order

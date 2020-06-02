@@ -8,9 +8,7 @@ class Menu
   end
 
   def list
-    dishes.map do |name, price|
-      format('%s: $%s', name.capitalize, price)
-    end.join(', ')
+    dishes.map { |name, price| format('%s: $%s', name.capitalize, price) }.join(', ')
   end
 
   def dish?(dish)

@@ -11,7 +11,7 @@ class Order
   def add(dish, quantity)
     raise 'Not in the menu' unless menu.dish?(dish)
 
-    dishes[dish] = quantity
+    add_to_dishes(dish, quantity)
   end
 
   def total
@@ -23,8 +23,10 @@ class Order
   attr_reader :menu
 
   def total_by_dish
-    dishes.map do |dish, quantity|
-      menu.price(dish) * quantity
-    end
+    dishes.map { |dish, quantity| menu.price(dish) * quantity }
+  end
+
+  def add_to_dishes(dish, quantity)
+    dishes[dish] = quantity
   end
 end
