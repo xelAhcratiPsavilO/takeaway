@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 describe 'User Stories' do
-  let(:takeaway) { Takeaway.new(menu) }
+  let(:takeaway) { Takeaway.new(menu, order) }
   let(:menu) { Menu.new(dishes) }
   let(:dishes) { { taco: 4.45, drink: 2.95 } }
+  let(:order) { Order.new(menu) }
+  let(:orders) { { taco: 1, drink: 2 } }
+  let(:invalid_order) { { turnip: 1 } }
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -13,6 +16,14 @@ describe 'User Stories' do
   # As a customer
   # So that I can order the meal I want
   # I would like to be able to select some number of several available dishes
-  it '' do
+  it 'Takeaway adds dishes to the order' do
+    allow(menu).to receive(:dish?).with(:taco).and_return(true)
+    allow(menu).to receive(:dish?).with(:drink).and_return(true)
+    takeaway.take_order(orders)
+    expect(order.dishes).to include orders
+  end
+  it 'Takeaway raises an error if dish is not in the menu' do
+    allow(menu).to receive(:dish?).with(:turnip).and_return(false)
+    expect { takeaway.take_order(invalid_order) }.to raise_error 'Not in the menu'
   end
 end

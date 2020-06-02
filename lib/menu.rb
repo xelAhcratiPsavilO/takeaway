@@ -12,4 +12,8 @@ class Menu
       format('%s: $%s', name.capitalize, price)
     end.join(', ')
   end
+
+  def dish?(dish)
+    dishes.include? dish
+  end
 end
