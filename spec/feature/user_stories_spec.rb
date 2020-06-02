@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 describe 'User Stories' do
-  let(:takeaway) { Takeaway.new(menu, order) }
+  let(:takeaway) { Takeaway.new(menu, order, sms) }
   let(:menu) { Menu.new(dishes) }
   let(:dishes) { { taco: 4.45, drink: 2.95 } }
   let(:order) { Order.new(menu) }
   let(:orders) { { taco: 1, drink: 2 } }
   let(:invalid_order) { { turnip: 1 } }
+  let(:sms) { double :sms }
   # As a customer
   # So that I can check if I want to order something
   # I would like to see a list of dishes with prices
@@ -34,5 +35,12 @@ describe 'User Stories' do
     allow(menu).to receive(:dish?).with(:drink).and_return(true)
     takeaway.take_order(orders)
     expect(takeaway.confirm_order).to eq 10.35
+  end
+  # As a customer
+  # So that I am reassured that my order will be delivered on time
+  # I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
+  it 'Takeaway sends an sms when the order has been placed' do
+    expect(sms).to receive :send
+    takeaway.send_sms
   end
 end

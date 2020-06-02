@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Takeaway
-  def initialize(menu, order)
+  def initialize(menu, order, sms)
     @menu = menu
     @order = order
+    @sms = sms
   end
 
   def show_menu
@@ -18,7 +19,11 @@ class Takeaway
     order.total
   end
 
+  def send_sms
+    sms.send
+  end
+
   private
 
-  attr_reader :menu, :order
+  attr_reader :menu, :order, :sms
 end
