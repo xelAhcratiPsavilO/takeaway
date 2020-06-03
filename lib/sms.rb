@@ -10,7 +10,7 @@ class Sms
     @config = config
   end
 
-  def send
+  def send_msg
     client.messages.create(args)
   end
 

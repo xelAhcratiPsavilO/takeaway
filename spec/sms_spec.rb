@@ -5,7 +5,7 @@ require 'sms'
 describe Sms do
   subject(:sms) { described_class.new(config, client) }
   let(:client) { double :client, messages: messages }
-  let(:messages) { double :messages }
+  let(:messages) { spy :messages }
   let(:config) do
     {
       account_sid: '123456789',
@@ -16,7 +16,7 @@ describe Sms do
     }
   end
 
-  describe '#send' do
+  describe '#send_msg' do
     context 'when it is 17:52' do
       before do
         allow(Time).to receive(:now).and_return(Time.parse('17:52'))
@@ -27,8 +27,8 @@ describe Sms do
           to: config[:to],
           body: 'Thank you for your order! Your deliver will arrive before 18:52'
         }
-        expect(messages).to receive(:create).with(args)
-        sms.send
+        sms.send_msg
+        expect(messages).to have_received(:create).with(args)
       end
     end
   end

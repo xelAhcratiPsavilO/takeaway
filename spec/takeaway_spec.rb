@@ -3,34 +3,35 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu, order, sms) }
-  let(:menu) { double :menu }
-  let(:order) { double :order }
+  subject(:takeaway) { described_class.new(menu, order, sms, config) }
+  let(:menu) { spy :menu }
+  let(:order) { spy :order }
   let(:orders) { { dish1: 1, dish2: 2 } }
-  let(:sms) { double :sms }
+  let(:sms) { spy :sms, config }
+  let(:config) { {} }
 
   describe '#show_menu' do
     it 'instructs menu to show list' do
-      expect(menu).to receive :list
       takeaway.show_menu
+      expect(menu).to have_received :list
     end
   end
   describe '#take_order' do
     it 'instructs order to add dishes' do
-      expect(order).to receive(:add).twice
       takeaway.take_order(orders)
+      expect(order).to have_received(:add).twice
     end
   end
   describe '#confirm_order' do
     it 'instructs order to show the total' do
-      expect(order).to receive :total
       takeaway.confirm_order
+      expect(order).to have_received :total
     end
   end
   describe '#send_sms' do
     it 'instructs sms to be sent' do
-      expect(sms).to receive :send
       takeaway.send_sms
+      expect(sms).to have_received :send_msg
     end
   end
 end
