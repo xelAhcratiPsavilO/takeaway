@@ -3,12 +3,13 @@
 require 'takeaway'
 
 describe Takeaway do
-  subject(:takeaway) { described_class.new(menu, order, sms, config) }
+  subject(:takeaway) { described_class.new(menu, order, sms, config, client) }
   let(:menu) { spy :menu }
   let(:order) { spy :order }
   let(:orders) { { dish1: 1, dish2: 2 } }
   let(:sms) { spy :sms, config }
   let(:config) { {} }
+  let(:client) { double :client }
 
   describe '#show_menu' do
     it 'instructs menu to show list' do

@@ -39,9 +39,17 @@ ruby -v
 ```bash
 git clone git@github.com:xelAhcratiPsavilO/takeaway.git
 ```
+- Install dependencies listed in the Gemfile:
+```bash
+bundle install
+```
 - Launch irb, pry or other ruby REPL:
 ```bash
 irb
+```
+- Launch system script (Twilio verified number required):
+```
+ruby system_script.rb
 ```
 ### Running
 - Load the Takeaway class (similarly for any other class):
