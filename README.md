@@ -12,7 +12,7 @@
 * [Author](#author)
 
 ## Code Quality
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/288834819e946e18fa8c/maintainability)](https://codeclimate.com/github/xelAhcratiPsavilO/takeaway/maintainability)
 
 ## Technologies
 - Main technology
@@ -79,15 +79,24 @@ Finished in 0.01715 seconds (files took 0.11363 seconds to load)
 
 High-level overview of the entities that make up this functional system.
 
-![](domain_model/DomainModel.png)
+![](domain_model/Domain_Model.png)
 
 Based on [client's requirements](USER_STORIES.md).
 
 Objects-Messages [diagram](DIAGRAM.md).
 
 ## Principles and takeaways
+A scalable design and seamless integration allowed the extraction and encapsulation of responsibilities into several classes.
+Abstraction and privatization of methods and properties allows to hide complexity creating simpler interfaces and reducing the impact of change.
+Dependency injection looses the coupling between objects, making the system more flexible, scalable and testable in isolated units.
+Forwarding methods allows to encapsulate behavior in new objects maintaining code in line with the single responsibility principle.
 
 ## Analysis
+There is room for improvement around abstraction and encapsulation to reduce the high number of instance variables.
+At the moment the system has a one on one relation of composition between Takeaway class and Menu class, it could be interesting considering that a Takeaway class could have several menus to choose from.
+It would have been interesting extracting the dish functionality into a Dish class.
+Currently the script shows a small portion of the system, it would have been worth expanding on the script to showcase all the functionality of the system.
+It would have been worth using memoization to make sure that instance variables in a method only get set once.
 
 ## Author
 
