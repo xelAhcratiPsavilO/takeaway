@@ -1,5 +1,5 @@
 # Takeaway
-
+Object based system to create and manage takeaway orders. The menu can display the dishes and check prices and the system can record orders and send SMS confirmations via Twilio API.
 
 ## Table of Contents
 * [Code Quality](#code-quality)
